@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ashish General Store and Cafe - Services</title>
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-900">
+
+  <!-- Header -->
+  <nav class="bg-gradient-to-r from-cyan-500 to-blue-500 shadow-md fixed w-full z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="#" class="text-white font-extrabold text-2xl">Ashish Store & Cafe</a>
+      <div class="space-x-6 hidden md:flex">
+        <a href="index.html" class="text-white hover:text-gray-200 font-semibold transition">Home</a>
+        <a href="services.html" class="text-white hover:text-gray-200 font-semibold transition">Services</a>
+        <a href="about.html" class="text-white hover:text-gray-200 font-semibold transition">About</a>
+        <a href="servicebook.html" class="text-white hover:text-gray-200 font-semibold transition">servicebook</a>
+        <a href="contact.html" class="text-white hover:text-gray-200 font-semibold transition">Contact</a>
+      </div>
+      <button id="menu-btn" class="md:hidden text-white focus:outline-none">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="menu" class="hidden md:hidden px-6 pb-4 bg-gradient-to-r from-cyan-500 to-blue-500">
+      <a href="index.html" class="block py-2 text-white font-semibold hover:text-gray-200">Home</a>
+      <a href="services.html" class="block py-2 text-white font-semibold hover:text-gray-200">Services</a>
+      <a href="about.html" class="block py-2 text-white font-semibold hover:text-gray-200">About</a>
+      <a href="servicebook.html" class="block py-2 text-white font-semibold hover:text-gray-200">servicebook</a>
+      <a href="contact.html" class="block py-2 text-white font-semibold hover:text-gray-200">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Main content -->
+  <main class="py-16">
+    <section class="max-w-7xl mx-auto px-6">
+      <h2 class="text-4xl font-extrabold text-cyan-700 mb-10 text-center">Our Top 30 Services</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+
+        <!-- Original 20 services -->
+        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition">
+          <h3 class="text-xl font-semibold mb-2">High-Speed Internet Access</h3>
+          <p class="text-gray-600 text-sm">Enjoy lightning-fast internet for all your browsing and work needs.</p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition">
+          <h3 class="text-xl font-semibold mb-2">Gaming Stations</h3>
+          <p class="text-gray-600 text-sm">Powerful PCs equipped for an immersive gaming experience.</p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition">
+          <h3 class="text-xl font-semibold mb-2">Printing Services</h3>
+          <p class="text-gray-600 text-sm">Fast, high-quality black & white and color printing.</p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition">
+          <h3 class="text-xl font-semibold mb-2">Private Cubicles</h3>
+          <p class="text-gray-600 text-sm">Quiet, private spaces for work or study.</p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition">
+          <h3 class="text-xl font-semibold mb-2">Scanning & Photocopying</h3>
+          <p class="text-gray-600 text-sm">Quick and clear document scanning and photocopying services.</p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition">
+          <h3 class="text-xl font-semibold mb-2">Laptop Rentals</h3>
+          <p class="text-gray-600 text-sm">Rent laptops for short-term use at affordable rates.</p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition">
+          <h3 class="text-xl font-semibold mb-2">Wi-Fi Hotspot</h3>
+          <p class="text-gray-600 text-sm">Connect your devices wirelessly throughout the cafe.</p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition">
+          <h3 class="text-xl font-semibold mb-2">Coffee & Snacks</h3>
+          <p class="text-gray-600 text-sm">Fresh beverages and snacks to keep you energized.</p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition">
+          <h3 class="text-xl font-semibold mb-2">USB & Peripheral Sales</h3>
+          <p class="text-gray-600 text-sm">Buy essential computer accessories on the spot.</p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition">
+          <h3 class="text-xl font-semibold mb-2">Technical Support</h3>
+          <p class="text-gray-600 text-sm">Assistance with basic computer troubleshooting and setup.</p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition">
+          <h3 class="text-xl font-semibold mb-2">Online Classes Setup</h3>
+          <p class="text-gray-600 text-sm">Facilities equipped for attending online classes and meetings.</p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition">
+          <h3 class="text-xl font-semibold mb-2">Software Installation</h3>
+          <p class="text-gray-600 text-sm">Install commonly used software on your devices quickly.</p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition">
+          <h3 class="text-xl font-semibold mb-2">Fax Services</h3>
+          <p class="text-gray-600 text-sm">Send and receive faxes efficiently.</p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition">
+          <h3 class="text-xl font-semibold mb-2">Document Binding</h3>
+          <p class="text-gray-600 text-sm">Professional binding for reports and presentations.</p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition">
+          <h3 class="text-xl font-semibold mb-2">Charging Stations</h3>
+          <p class="text-gray-600 text-sm">Multiple charging points for phones and laptops.</p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition">
+          <h3 class="text-xl font-semibold mb-2">Graphic Design Help</h3>
+          <p class="text-gray-600 text-sm">Basic graphic design support and printing.</p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition">
+          <h3 class="text-xl font-semibold mb-2">Video Conferencing</h3>
+          <p class="text-gray-600 text-sm">High-quality equipment for seamless video calls.</p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition">
+          <h3 class="text-xl font-semibold mb-2">Resume Printing</h3>
+          <p class="text-gray-600 text-sm">Get professional prints of your resumes and documents.</p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition">
+          <h3 class="text-xl font-semibold mb-2">Online Gaming Tournaments</h3>
+          <p class="text-gray-600 text-sm">Join or host gaming tournaments in our cafe.</p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition">
+          <h3 class="text-xl font-semibold mb-2">Event Hosting</h3>
+          <p class="text-gray-600 text-sm">Space and equipment available for tech and gaming events.</p>
+        </div>
+
+        <!-- New 10 services -->
+
+        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition">
+          <h3 class="text-xl font-semibold mb-2">Data Backup Services</h3>
+          <p class="text-gray-600 text-sm">Secure backup solutions for your important files.</p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition">
+          <h3 class="text-xl font-semibold mb-2">Device Repairs</h3>
+          <p class="text-gray-600 text-sm">Basic repairs and troubleshooting for computers and gadgets.</p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition">
+          <h3 class="text-xl font-semibold mb-2">Custom PC Builds</h3>
+          <p class="text-gray-600 text-sm">Get advice and help assembling custom gaming or work PCs.</p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition">
+          <h3 class="text-xl font-semibold mb-2">Software Training</h3>
+          <p class="text-gray-600 text-sm">Learn popular software tools with hands-on guidance.</p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition">
+          <h3 class="text-xl font-semibold mb-2">Virus Removal</h3>
+          <p class="text-gray-600 text-sm">Professional removal of malware and viruses.</p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition">
+          <h3 class="text-xl font-semibold mb-2">Cloud Storage Setup</h3>
+          <p class="text-gray-600 text-sm">Help setting up and syncing cloud storage accounts.</p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition">
+          <h3 class="text-xl font-semibold mb-2">Photo Editing</h3>
+          <p class="text-gray-600 text-sm">Basic photo retouching and editing services.</p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition">
+          <h3 class="text-xl font-semibold mb-2">Social Media Setup</h3>
+          <p class="text-gray-600 text-sm">Assistance in setting up social media profiles and pages.</p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition">
+          <h3 class="text-xl font-semibold mb-2">Mobile Printing</h3>
+          <p class="text-gray-600 text-sm">Print documents directly from your mobile device.</p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition">
+          <h3 class="text-xl font-semibold mb-2">Website Browsing Help</h3>
+          <p class="text-gray-600 text-sm">Assistance navigating websites and online services.</p>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+<footer class="bg-gray-900 text-gray-300 py-12">
+  <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
+
+    <!-- About -->
+    <div>
+      <h3 class="text-white text-xl font-semibold mb-4">Ashish General Store & Cafe</h3>
+      <p class="text-gray-400 leading-relaxed">
+        Established 2010<br/>
+        Owned by Pradeep Mahto<br/>
+        CEO: Taru Devi
+      </p>
+    </div>
+
+    <!-- Quick Links -->
+    <div>
+      <h3 class="text-white text-xl font-semibold mb-4">Quick Links</h3>
+      <ul class="space-y-2">
+        <li><a href="#home" class="hover:text-cyan-400 transition">Home</a></li>
+        <li><a href="services.html" class="hover:text-cyan-400 transition">Services</a></li>
+        <li><a href="about.html" class="hover:text-cyan-400 transition">About</a></li>
+        <li><a href="servicebook.html" class="hover:text-cyan-400 transition">Gallery</a></li>
+        <li><a href="#contact" class="hover:text-cyan-400 transition">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact Info -->
+    <div>
+      <h3 class="text-white text-xl font-semibold mb-4">Contact</h3>
+      <p class="text-gray-400">
+        Main Street, Your City<br/>
+        Phone: <a href="tel:+919876543210" class="hover:text-cyan-400 transition">+91-9876543210</a><br/>
+        Email: <a href="mailto:contact@ashishstorecafe.com" class="hover:text-cyan-400 transition">contact@ashishstorecafe.com</a>
+      </p>
+    </div>
+
+    <!-- Policies -->
+    <div>
+      <h3 class="text-white text-xl font-semibold mb-4">Policies</h3>
+      <ul class="space-y-2">
+        <li><button id="termsBtn" class="hover:text-cyan-400 transition focus:outline-none">Terms & Conditions</button></li>
+        <li><button id="faqBtn" class="hover:text-cyan-400 transition focus:outline-none">FAQ</button></li>
+        <li><button id="refundBtn" class="hover:text-cyan-400 transition focus:outline-none">Refund Policy</button></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="border-t border-gray-800 mt-10 pt-6 text-center text-gray-500 text-sm select-none">
+    © 2010 - 2025 Ashish General Store & Cafe. All rights reserved.
+  </div>
+
+  <!-- Modal Overlay -->
+  <div id="modalOverlay" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center hidden z-50">
+    <div class="bg-white rounded-lg max-w-3xl w-full p-6 relative shadow-lg">
+      <button id="modalClose" class="absolute top-4 right-4 text-gray-600 hover:text-gray-900 text-xl font-bold focus:outline-none">&times;</button>
+      <div id="modalContent" class="max-h-[60vh] overflow-y-auto text-gray-800"></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const modalOverlay = document.getElementById('modalOverlay');
+  const modalContent = document.getElementById('modalContent');
+  const modalClose = document.getElementById('modalClose');
+
+  const policies = {
+    terms: `
+      <h2 class="text-2xl font-bold mb-4">Terms & Conditions</h2>
+      <p>By using Ashish General Store & Cafe services, you agree to comply with all our policies and local regulations. We reserve the right to modify or discontinue any service without prior notice. Customers must respect store property and other patrons. Failure to comply may result in suspension or termination of service.</p>
+    `,
+    faq: `
+      <h2 class="text-2xl font-bold mb-4">Frequently Asked Questions (FAQ)</h2>
+      <dl>
+        <dt class="font-semibold mt-4">What are your opening hours?</dt>
+        <dd>We are open every day from 9 AM to 10 PM.</dd>
+        <dt class="font-semibold mt-4">Do you offer gaming stations?</dt>
+        <dd>Yes, we have dedicated gaming stations with high-performance PCs.</dd>
+        <dt class="font-semibold mt-4">Can I reserve a private cubicle?</dt>
+        <dd>Yes, private cubicles can be booked in advance for daily use.</dd>
+        <dt class="font-semibold mt-4">What payment methods do you accept?</dt>
+        <dd>We accept cash, cards, and popular mobile payment options.</dd>
+      </dl>
+    `,
+    refund: `
+      <h2 class="text-2xl font-bold mb-4">Refund Policy</h2>
+      <p>Refunds are provided only in cases of service failure or equipment malfunction. Please notify our staff immediately for any issues. Refund requests must be made within 24 hours of service usage. We do not refund for change of mind or unused time.</p>
+    `
+  };
+
+  // Open modal with appropriate content
+  document.getElementById('termsBtn').addEventListener('click', () => {
+    modalContent.innerHTML = policies.terms;
+    modalOverlay.classList.remove('hidden');
+  });
+  document.getElementById('faqBtn').addEventListener('click', () => {
+    modalContent.innerHTML = policies.faq;
+    modalOverlay.classList.remove('hidden');
+  });
+  document.getElementById('refundBtn').addEventListener('click', () => {
+    modalContent.innerHTML = policies.refund;
+    modalOverlay.classList.remove('hidden');
+  });
+
+  // Close modal
+  modalClose.addEventListener('click', () => {
+    modalOverlay.classList.add('hidden');
+    modalContent.innerHTML = '';
+  });
+
+  // Close modal on overlay click
+  modalOverlay.addEventListener('click', (e) => {
+    if (e.target === modalOverlay) {
+      modalOverlay.classList.add('hidden');
+      modalContent.innerHTML = '';
+    }
+  });
+
+  // Close modal on ESC key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !modalOverlay.classList.contains('hidden')) {
+      modalOverlay.classList.add('hidden');
+      modalContent.innerHTML = '';
+    }
+  });
+</script>
+
+
+</body>
+</html>

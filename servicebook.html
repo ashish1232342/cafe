@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Book a Service - Ashish General Store and Cafe</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body class="bg-cyan-50 text-gray-900">
+
+  <!-- Header -->
+  <header class="bg-cyan-700 text-white shadow fixed w-full z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold cursor-pointer">Ashish General Store and Cafe</h1>
+      <nav class="space-x-6 text-lg font-medium">
+        <a href="index.html" class="hover:text-cyan-300 transition">Home</a>
+        <a href="services.html" class="hover:text-cyan-300 transition">Services</a>
+        <a href="about.html" class="hover:text-cyan-300 transition">About</a>
+        <a href="contact.html" class="hover:text-cyan-300 transition">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Spacer for fixed header -->
+  <div class="h-20"></div>
+
+  <!-- Main content -->
+  <main class="max-w-3xl mx-auto px-6 py-16 bg-white rounded-lg shadow-lg">
+    <h2 class="text-4xl font-extrabold text-cyan-700 mb-10 text-center opacity-0" id="heading">
+      Book a Service
+    </h2>
+
+    <form id="bookingForm" class="space-y-8 opacity-0">
+
+      <!-- Service Select -->
+      <div>
+        <label for="service" class="block mb-2 font-semibold text-gray-700">Select a Service</label>
+        <select id="service" name="service" required class="w-full border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-cyan-500">
+          <option value="" disabled selected>Select a service</option>
+          <option value="internet" data-price="20">Internet Access - ₹20/hour</option>
+          <option value="printing" data-price="5">Printing - ₹5/page</option>
+          <option value="mobile_printing" data-price="10">Mobile Printing - ₹10/page</option>
+          <option value="website_help" data-price="100">Website Browsing Help - ₹100/hour</option>
+          <option value="mobile_recharge">Mobile Recharge</option>
+          <option value="csc">CSC Services</option>
+        </select>
+      </div>
+
+      <!-- Printing Pages -->
+      <div id="printPagesDiv" class="hidden">
+        <label for="printPages" class="block mb-2 font-semibold text-gray-700">Number of Pages</label>
+        <input type="number" id="printPages" name="printPages" min="1" value="1" class="w-full border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-cyan-500" />
+      </div>
+
+      <!-- Mobile Recharge Section -->
+      <div id="mobileRechargeDiv" class="hidden space-y-6">
+        <div>
+          <label for="mobileNumber" class="block mb-2 font-semibold text-gray-700">Mobile Number</label>
+          <input type="tel" id="mobileNumber" name="mobileNumber" pattern="[0-9]{10}" placeholder="Enter 10-digit mobile number" required class="w-full border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-cyan-500" />
+        </div>
+
+        <div>
+          <label for="simProvider" class="block mb-2 font-semibold text-gray-700">Select SIM Provider</label>
+          <select id="simProvider" name="simProvider" class="w-full border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-cyan-500">
+            <option value="" disabled selected>Select SIM</option>
+            <option value="jio">Jio</option>
+            <option value="airtel">Airtel</option>
+          </select>
+        </div>
+
+        <div id="plansDiv" class="hidden">
+          <label for="planSelect" class="block mb-2 font-semibold text-gray-700">Select Plan</label>
+          <select id="planSelect" name="planSelect" class="w-full border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-cyan-500">
+            <!-- Filled dynamically -->
+          </select>
+        </div>
+      </div>
+
+      <!-- CSC Services Section -->
+      <div id="cscDiv" class="hidden">
+        <label for="cscService" class="block mb-2 font-semibold text-gray-700">Select CSC Service</label>
+        <select id="cscService" name="cscService" class="w-full border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-cyan-500">
+          <option value="" disabled selected>Select CSC Service</option>
+          <option value="new_pan_card">New PAN Card</option>
+          <option value="update_pan_card">Update PAN Card</option>
+          <option value="voter_id">Voter ID</option>
+          <option value="aadhaar_card">Aadhaar Card</option>
+          <option value="passport_application">Passport Application</option>
+          <option value="driving_license">Driving License</option>
+          <option value="birth_certificate">Birth Certificate</option>
+          <option value="ration_card">Ration Card</option>
+          <option value="caste_certificate">Caste Certificate</option>
+          <option value="income_certificate">Income Certificate</option>
+        </select>
+      </div>
+
+      <!-- Price Display -->
+      <div>
+        <label class="block mb-2 font-semibold text-gray-700">Price</label>
+        <p id="priceDisplay" class="text-2xl font-bold text-cyan-700">₹0</p>
+      </div>
+
+      <button type="submit" class="w-full bg-cyan-700 text-white text-xl font-semibold py-4 rounded-lg hover:bg-cyan-800 transition">
+        Pay Now
+      </button>
+
+    </form>
+  </main>
+
+  <!-- Razorpay + Script Logic -->
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script>
+    emailjs.init("n1_vAIffSdDFkbr5X");
+
+    gsap.to("#heading", { opacity: 1, duration: 1, delay: 0.3 });
+    gsap.to("#bookingForm", { opacity: 1, duration: 1, delay: 0.7 });
+
+    const serviceSelect = document.getElementById("service");
+    const priceDisplay = document.getElementById("priceDisplay");
+    const printPagesDiv = document.getElementById("printPagesDiv");
+    const printPagesInput = document.getElementById("printPages");
+      
+    const mobileRechargeDiv = document.getElementById("mobileRechargeDiv");
+    const simProviderSelect = document.getElementById("simProvider");
+    const plansDiv = document.getElementById("plansDiv");
+    const planSelect = document.getElementById("planSelect");
+    const mobileNumberInput = document.getElementById("mobileNumber");
+
+    const cscDiv = document.getElementById("cscDiv");
+    const cscServiceSelect = document.getElementById("cscService");
+
+    const plansData = {
+      jio: [
+        { name: "Jio 199 - 28 Days Unlimited", price: 199 },
+        { name: "Jio 299 - 56 Days Unlimited", price: 299 },
+        { name: "Jio 399 - 84 Days Unlimited", price: 399 },
+      ],
+      airtel: [
+        { name: "Airtel 219 - 28 Days Unlimited", price: 219 },
+        { name: "Airtel 349 - 56 Days Unlimited", price: 349 },
+        { name: "Airtel 459 - 84 Days Unlimited", price: 459 },
+      ]
+    };
+
+    function updatePrice() {
+      const selectedOption = serviceSelect.options[serviceSelect.selectedIndex];
+      const serviceValue = serviceSelect.value;
+
+      printPagesDiv.classList.add("hidden");
+      mobileRechargeDiv.classList.add("hidden");
+      cscDiv.classList.add("hidden");
+
+      if (serviceValue === "printing") {
+        printPagesDiv.classList.remove("hidden");
+        const price = Number(selectedOption.getAttribute("data-price")) || 0;
+        const pages = Number(printPagesInput.value) || 1;
+        priceDisplay.textContent = `₹${price * pages}`;
+      } else if (serviceValue === "mobile_recharge") {
+        mobileRechargeDiv.classList.remove("hidden");
+        const selectedPlan = planSelect.options[planSelect.selectedIndex];
+        priceDisplay.textContent = selectedPlan ? `₹${selectedPlan.getAttribute("data-price")}` : "₹0";
+      } else if (serviceValue === "csc") {
+          printPagesDiv.classList.add("hidden");
+  mobileRechargeDiv.classList.add("hidden");
+  cscDiv.classList.remove("hidden");
+
+  mobileNumberInput.required = false;
+
+  const cscSelected = cscServiceSelect.value;
+  let cscPrice = 50; // default price for CSC service
+  if (cscSelected) {
+    priceDisplay.textContent = `₹${cscPrice}`;
+  } else {
+    priceDisplay.textContent = "₹0";
+  }
+}
+ else {
+        priceDisplay.textContent = `₹${Number(selectedOption?.getAttribute("data-price")) || 0}`;
+      }
+    }
+    
+    serviceSelect.addEventListener("change", () => {
+      printPagesInput.value = 1;
+      simProviderSelect.value = "";
+      planSelect.innerHTML = "";
+      plansDiv.classList.add("hidden");
+      cscServiceSelect.value = "";
+      mobileNumberInput.value = "";
+
+      updatePrice();
+    });
+
+    printPagesInput.addEventListener("input", updatePrice);
+    cscServiceSelect.addEventListener("change", updatePrice);
+    planSelect.addEventListener("change", updatePrice);
+
+    simProviderSelect.addEventListener("change", () => {
+      const sim = simProviderSelect.value;
+      plansDiv.classList.toggle("hidden", !plansData[sim]);
+      planSelect.innerHTML = plansData[sim] ? '<option disabled selected>Select Plan</option>' : "";
+
+      plansData[sim]?.forEach(plan => {
+        const option = document.createElement("option");
+        option.textContent = plan.name;
+        option.value = plan.name;
+        option.setAttribute("data-price", plan.price);
+        planSelect.appendChild(option);
+      });
+
+      updatePrice();
+    });
+
+    document.getElementById("bookingForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const service = serviceSelect.value;
+      let amount = 0;
+      let description = "";
+
+      if (service === "printing") {
+        const price = Number(serviceSelect.selectedOptions[0].getAttribute("data-price"));
+        const pages = Number(printPagesInput.value);
+        amount = price * pages;
+        description = `${pages} pages printing`;
+      } else if (service === "mobile_recharge") {
+        const plan = planSelect.selectedOptions[0];
+        amount = Number(plan.getAttribute("data-price"));
+        description = `Mobile Recharge - ${plan.text}`;
+      } else if (service === "csc") {
+        amount = 50;
+        description = `CSC Service - ${cscServiceSelect.selectedOptions[0].text}`;
+      } else {
+        amount = Number(serviceSelect.selectedOptions[0].getAttribute("data-price"));
+        description = serviceSelect.selectedOptions[0].text;
+      }
+
+      if (!amount) return alert("Please complete all selections before payment.");
+
+      const options = {
+        key: "rzp_test_UXGnrpf2UQCuoY", // Replace with real Razorpay key
+        amount: amount * 100,
+        currency: "INR",
+        name: "Ashish General Store and Cafe",
+        Image: "logo.png",
+        description,
+        handler: function (response) {
+          sendBookingEmail({
+            service: description,
+            price: amount,
+            paymentId: response.razorpay_payment_id
+          });
+        },
+        theme: { color: "#0f766e" }
+      };
+
+      new Razorpay(options).open();
+    });
+
+    function sendBookingEmail(details) {
+      emailjs.send('service_jddzd28', 'template_9zy2vii', details)
+        .then(() => {
+          alert("Booking confirmed and email sent!");
+          document.getElementById("bookingForm").reset();
+          printPagesDiv.classList.add("hidden");
+          mobileRechargeDiv.classList.add("hidden");
+          cscDiv.classList.add("hidden");
+          priceDisplay.textContent = "₹0";
+        })
+        .catch(error => {
+          alert("Email failed: " + JSON.stringify(error));
+        });
+    }
+
+    updatePrice();
+  </script>
+</body>
+</html>
